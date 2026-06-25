@@ -287,8 +287,8 @@
     <form id="surveyForm">
 
       <div class="field">
-        <label for="nama">Nama Lengkap <span class="wajib">*</span></label>
-        <input type="text" id="nama" name="nama" placeholder="Contoh: Ahmad Fauzi" required />
+        <label for="nama">Nama Lengkap (Sulthon) <span class="wajib">*</span></label>
+        <input type="text" id="nama" name="nama" placeholder="Contoh: Ahmad Munadil" required />
       </div>
 
       <div class="field">
@@ -304,11 +304,6 @@
           <span class="liter-badge">Liter / bulan</span>
         </div>
         <p class="hint">Perkiraan konsumsi rumah tangga Anda dalam satu bulan.</p>
-      </div>
-
-      <div class="field">
-        <label for="catatan">Catatan (opsional)</label>
-        <textarea id="catatan" name="catatan" rows="3" placeholder="Contoh: minta diantar ke masjid, atau ada pertanyaan seputar produk..."></textarea>
       </div>
 
       <button type="submit" class="btn-kirim" id="btnKirim">Kirim Data Saya</button>
@@ -355,9 +350,8 @@
     const nama    = document.getElementById('nama').value.trim();
     const hp      = document.getElementById('hp').value.trim();
     const liter   = document.getElementById('liter').value;
-    const catatan = document.getElementById('catatan').value.trim();
 
-    const payload = { nama, hp, liter, catatan };
+    const payload = { nama, hp, liter };
 
     btnKirim.disabled = true;
     btnKirim.textContent = 'Mengirim...';
@@ -372,13 +366,12 @@
 
       // Buat pesan WA otomatis berisi data jamaah
       const pesan =
-        `✅ *Konfirmasi Pendataan Minyak Majelis*\n\n` +
+        `✅ *Konfirmasi Pendataan Minyak Majelis Al Asmaul Husna*\n\n` +
         `Assalamualaikum Admin,\n\n` +
         `Saya sudah mengisi survey kebutuhan minyak:\n\n` +
         `👤 *Nama:* ${nama}\n` +
         `📱 *No. WA:* ${hp}\n` +
         `🛢️ *Kebutuhan:* ${liter} liter/bulan` +
-        (catatan ? `\n📝 *Catatan:* ${catatan}` : '') +
         `\n\nMohon dikonfirmasi. Terima kasih 🙏`;
 
       const waURL = `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(pesan)}`;
