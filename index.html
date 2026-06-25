@@ -62,9 +62,7 @@
       line-height: 1.2;
       position: relative;
     }
-    header h1 span {
-      color: var(--emas-muda);
-    }
+    header h1 span { color: var(--emas-muda); }
     .header-sub {
       margin-top: 10px;
       font-size: 14px;
@@ -91,9 +89,7 @@
       line-height: 1.75;
       color: var(--teks-abu);
     }
-    .intro strong {
-      color: var(--hijau-mid);
-    }
+    .intro strong { color: var(--hijau-mid); }
 
     /* ── CARD FORM ── */
     .card {
@@ -109,9 +105,7 @@
       border-top: 4px solid var(--emas);
     }
 
-    .field {
-      margin-bottom: 22px;
-    }
+    .field { margin-bottom: 22px; }
     label {
       display: block;
       font-size: 13px;
@@ -120,10 +114,8 @@
       margin-bottom: 7px;
       letter-spacing: .3px;
     }
-    label .wajib {
-      color: #c0392b;
-      margin-left: 2px;
-    }
+    label .wajib { color: #c0392b; margin-left: 2px; }
+
     input[type="text"],
     input[type="tel"],
     input[type="number"],
@@ -145,30 +137,13 @@
       box-shadow: 0 0 0 3px rgba(82,183,136,.15);
       background: var(--putih);
     }
-    input::placeholder, textarea::placeholder {
-      color: #9ca3af;
-    }
+    input::placeholder, textarea::placeholder { color: #9ca3af; }
 
-    .hint {
-      font-size: 12px;
-      color: var(--teks-abu);
-      margin-top: 5px;
-    }
+    .hint { font-size: 12px; color: var(--teks-abu); margin-top: 5px; }
 
-    /* liter display */
-    .liter-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .liter-wrap input[type="number"] {
-      max-width: 140px;
-    }
-    .liter-badge {
-      font-size: 14px;
-      color: var(--hijau-mid);
-      font-weight: 600;
-    }
+    .liter-wrap { display: flex; align-items: center; gap: 12px; }
+    .liter-wrap input[type="number"] { max-width: 140px; }
+    .liter-badge { font-size: 14px; color: var(--hijau-mid); font-weight: 600; }
 
     /* tombol */
     .btn-kirim {
@@ -196,10 +171,7 @@
       text-align: center;
       padding: 32px 20px;
     }
-    .sukses .icon {
-      font-size: 52px;
-      margin-bottom: 14px;
-    }
+    .sukses .icon { font-size: 52px; margin-bottom: 14px; }
     .sukses h2 {
       font-family: 'Amiri', serif;
       font-size: 26px;
@@ -212,29 +184,50 @@
       line-height: 1.7;
       margin-bottom: 20px;
     }
+
+    .kotak-petunjuk {
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 0 0 20px;
+      text-align: left;
+    }
+    .kotak-petunjuk .judul-petunjuk {
+      font-size: 13px;
+      font-weight: 700;
+      color: #166534;
+      margin-bottom: 8px;
+    }
+    .kotak-petunjuk .isi-petunjuk {
+      font-size: 13px;
+      color: #15803d;
+      line-height: 1.75;
+      margin: 0;
+    }
+    .kotak-petunjuk .isi-petunjuk strong { color: #14532d; }
+
     .btn-wa {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       background: #25D366;
       color: #fff;
       font-size: 15px;
       font-weight: 600;
       font-family: 'Inter', sans-serif;
-      padding: 13px 24px;
+      padding: 14px 24px;
       border-radius: 10px;
       text-decoration: none;
       transition: background .2s, transform .1s;
       box-shadow: 0 4px 12px rgba(37,211,102,.3);
+      width: 100%;
     }
     .btn-wa:hover { background: #1ebe5d; }
     .btn-wa:active { transform: scale(.97); }
     .btn-wa svg { flex-shrink: 0; }
-    .wa-note {
-      font-size: 12px;
-      color: #9ca3af;
-      margin-top: 12px;
-    }
+    .wa-note { font-size: 12px; color: #9ca3af; margin-top: 12px; }
 
     /* ── ERROR ── */
     .error-msg {
@@ -312,17 +305,26 @@
 
     <!-- Sukses -->
     <div class="sukses" id="sukses">
+      <canvas id="confetti-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999"></canvas>
       <div class="icon">✅</div>
       <h2>Jazakallah Khairan!</h2>
-      <p>Data Anda sudah tercatat.<br>Klik tombol di bawah untuk konfirmasi langsung ke admin majelis via WhatsApp.</p>
+      <p>Data Anda sudah tercatat di sistem kami.</p>
+
+      <div class="kotak-petunjuk">
+        <p class="judul-petunjuk">⚠️ Langkah wajib berikutnya:</p>
+        <p class="isi-petunjuk">
+          Klik tombol hijau di bawah → WhatsApp akan terbuka dengan pesan yang sudah terisi otomatis → klik <strong>Kirim</strong> untuk konfirmasi ke admin.
+        </p>
+      </div>
+
       <a id="btnWA" href="#" target="_blank" class="btn-wa">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
           <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.528 5.859L.057 23.5a.5.5 0 0 0 .61.61l5.677-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.7-.52-5.25-1.43l-.38-.22-3.92 1.03 1.04-3.81-.25-.39A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
         </svg>
-        Konfirmasi via WhatsApp
+        Konfirmasi via WhatsApp Sekarang
       </a>
-      <p class="wa-note">Pesan sudah terisi otomatis, tinggal kirim ✓</p>
+      <p class="wa-note">Tinggal klik Kirim di WhatsApp ✓</p>
     </div>
 
   </div>
@@ -331,11 +333,8 @@
 <footer>© Majelis Al Asmaul Husna · Dewan Iqthisodi · Survey ini aman dan hanya digunakan untuk keperluan internal.</footer>
 
 <script>
-  // ⬇️ GANTI URL INI dengan URL Google Apps Script Anda
   const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxbksNZ69vFfgr37gWVyBOS7OdlOXdhCUuGagmv-3eiqprqbTW7lrdoPLxiOBdGyTIiVw/exec";
-
-  // Nomor WA Admin (sudah diisi)
-  const WA_ADMIN = "62816787977"; // 0816787977 → format internasional
+  const WA_ADMIN = "62816787977";
 
   const form     = document.getElementById('surveyForm');
   const sukses   = document.getElementById('sukses');
@@ -347,9 +346,9 @@
     e.preventDefault();
     errorMsg.style.display = 'none';
 
-    const nama    = document.getElementById('nama').value.trim();
-    const hp      = document.getElementById('hp').value.trim();
-    const liter   = document.getElementById('liter').value;
+    const nama  = document.getElementById('nama').value.trim();
+    const hp    = document.getElementById('hp').value.trim();
+    const liter = document.getElementById('liter').value;
 
     const payload = { nama, hp, liter };
 
@@ -364,21 +363,20 @@
         body: JSON.stringify(payload),
       });
 
-      // Buat pesan WA otomatis berisi data jamaah
       const pesan =
         `✅ *Konfirmasi Pendataan Minyak Majelis Al Asmaul Husna*\n\n` +
         `Assalamualaikum Admin,\n\n` +
-        `Saya sudah mengisi survey kebutuhan minyak:\n\n` +
+        `Saya sudah mengisi survey kebutuhan minyak goreng:\n\n` +
         `👤 *Nama:* ${nama}\n` +
         `📱 *No. WA:* ${hp}\n` +
         `🛢️ *Kebutuhan:* ${liter} liter/bulan` +
         `\n\nMohon dikonfirmasi. Terima kasih 🙏`;
 
-      const waURL = `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(pesan)}`;
-      btnWA.href = waURL;
+      btnWA.href = `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(pesan)}`;
 
       form.style.display = 'none';
       sukses.style.display = 'block';
+      buatConfetti();
 
     } catch (err) {
       errorMsg.style.display = 'block';
@@ -386,6 +384,47 @@
       btnKirim.textContent = 'Kirim Data Saya';
     }
   });
+
+  function buatConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const warna = ['#c9a84c','#2d6a4f','#52b788','#f0d68a','#1a3a2a','#ffffff'];
+    const partikel = Array.from({length: 130}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * -canvas.height,
+      w: Math.random() * 10 + 5,
+      h: Math.random() * 6 + 3,
+      warna: warna[Math.floor(Math.random() * warna.length)],
+      kecepatan: Math.random() * 3 + 2,
+      rotasi: Math.random() * 360,
+      putaran: Math.random() * 6 - 3,
+    }));
+
+    let frame;
+    function animasi() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      partikel.forEach(p => {
+        p.y += p.kecepatan;
+        p.rotasi += p.putaran;
+        if (p.y > canvas.height) { p.y = -20; p.x = Math.random() * canvas.width; }
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotasi * Math.PI / 180);
+        ctx.fillStyle = p.warna;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      });
+      frame = requestAnimationFrame(animasi);
+    }
+    animasi();
+    setTimeout(() => {
+      cancelAnimationFrame(frame);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }, 3500);
+  }
 </script>
 
 </body>
