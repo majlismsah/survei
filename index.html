@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survey Kebutuhan Minyak – Majelis</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --hijau-tua:  #1a3a2a;
+      --hijau-mid:  #2d6a4f;
+      --hijau-terang: #52b788;
+      --emas:       #c9a84c;
+      --emas-muda:  #f0d68a;
+      --krem:       #fdf8ee;
+      --teks-gelap: #1c1c1c;
+      --teks-abu:   #6b7280;
+      --putih:      #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--krem);
+      color: var(--teks-gelap);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--hijau-tua);
+      padding: 28px 20px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 18px,
+        rgba(201,168,76,.07) 18px,
+        rgba(201,168,76,.07) 19px
+      );
+    }
+    .header-ornamen {
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--emas);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'Amiri', serif;
+      font-size: clamp(26px, 6vw, 42px);
+      color: var(--putih);
+      line-height: 1.2;
+      position: relative;
+    }
+    header h1 span {
+      color: var(--emas-muda);
+    }
+    .header-sub {
+      margin-top: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+      position: relative;
+    }
+    .garis-emas {
+      width: 60px;
+      height: 2px;
+      background: var(--emas);
+      margin: 16px auto 0;
+      position: relative;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      max-width: 560px;
+      margin: 36px auto 0;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .intro p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--teks-abu);
+    }
+    .intro strong {
+      color: var(--hijau-mid);
+    }
+
+    /* ── CARD FORM ── */
+    .card {
+      max-width: 520px;
+      margin: 32px auto 60px;
+      padding: 0 16px;
+    }
+    .card-inner {
+      background: var(--putih);
+      border-radius: 16px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 24px rgba(26,58,42,.10);
+      border-top: 4px solid var(--emas);
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--hijau-tua);
+      margin-bottom: 7px;
+      letter-spacing: .3px;
+    }
+    label .wajib {
+      color: #c0392b;
+      margin-left: 2px;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: var(--teks-gelap);
+      background: #f9fafb;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--hijau-terang);
+      box-shadow: 0 0 0 3px rgba(82,183,136,.15);
+      background: var(--putih);
+    }
+    input::placeholder, textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--teks-abu);
+      margin-top: 5px;
+    }
+
+    /* liter display */
+    .liter-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .liter-wrap input[type="number"] {
+      max-width: 140px;
+    }
+    .liter-badge {
+      font-size: 14px;
+      color: var(--hijau-mid);
+      font-weight: 600;
+    }
+
+    /* tombol */
+    .btn-kirim {
+      width: 100%;
+      padding: 14px;
+      background: var(--hijau-mid);
+      color: var(--putih);
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+      margin-top: 8px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: .3px;
+    }
+    .btn-kirim:hover { background: var(--hijau-tua); }
+    .btn-kirim:active { transform: scale(.98); }
+    .btn-kirim:disabled { background: #9ca3af; cursor: not-allowed; }
+
+    /* ── SUKSES ── */
+    .sukses {
+      display: none;
+      text-align: center;
+      padding: 32px 20px;
+    }
+    .sukses .icon {
+      font-size: 52px;
+      margin-bottom: 14px;
+    }
+    .sukses h2 {
+      font-family: 'Amiri', serif;
+      font-size: 26px;
+      color: var(--hijau-tua);
+      margin-bottom: 10px;
+    }
+    .sukses p {
+      font-size: 14px;
+      color: var(--teks-abu);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      padding: 13px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background .2s, transform .1s;
+      box-shadow: 0 4px 12px rgba(37,211,102,.3);
+    }
+    .btn-wa:hover { background: #1ebe5d; }
+    .btn-wa:active { transform: scale(.97); }
+    .btn-wa svg { flex-shrink: 0; }
+    .wa-note {
+      font-size: 12px;
+      color: #9ca3af;
+      margin-top: 12px;
+    }
+
+    /* ── ERROR ── */
+    .error-msg {
+      display: none;
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #b91c1c;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    @media (max-width: 480px) {
+      .card-inner { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="header-ornamen">Majelis • Program Ekonomi Umat</p>
+  <h1>Survey Kebutuhan<br><span>Minyak Majelis</span></h1>
+  <p class="header-sub">Bantu kami siapkan stok yang tepat untuk Anda</p>
+  <div class="garis-emas"></div>
+</header>
+
+<div class="intro">
+  <p>
+    Sebagai bagian dari <strong>program ekonomi majelis</strong>, kami sedang mendata kebutuhan minyak setiap jamaah.
+    Isi form di bawah agar kami bisa menyiapkan pasokan yang cukup setiap bulannya.
+  </p>
+</div>
+
+<div class="card">
+  <div class="card-inner">
+
+    <!-- Error -->
+    <div class="error-msg" id="errorMsg">Terjadi kesalahan saat mengirim data. Coba lagi sebentar.</div>
+
+    <!-- Form -->
+    <form id="surveyForm">
+
+      <div class="field">
+        <label for="nama">Nama Lengkap <span class="wajib">*</span></label>
+        <input type="text" id="nama" name="nama" placeholder="Contoh: Ahmad Fauzi" required />
+      </div>
+
+      <div class="field">
+        <label for="hp">Nomor HP / WhatsApp <span class="wajib">*</span></label>
+        <input type="tel" id="hp" name="hp" placeholder="08xxxxxxxxxx" required />
+        <p class="hint">Kami gunakan untuk konfirmasi pesanan Anda.</p>
+      </div>
+
+      <div class="field">
+        <label for="liter">Kebutuhan Minyak per Bulan <span class="wajib">*</span></label>
+        <div class="liter-wrap">
+          <input type="number" id="liter" name="liter" placeholder="0" min="1" max="9999" required />
+          <span class="liter-badge">Liter / bulan</span>
+        </div>
+        <p class="hint">Perkiraan konsumsi rumah tangga Anda dalam satu bulan.</p>
+      </div>
+
+      <div class="field">
+        <label for="catatan">Catatan (opsional)</label>
+        <textarea id="catatan" name="catatan" rows="3" placeholder="Contoh: minta diantar ke masjid, atau ada pertanyaan seputar produk..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-kirim" id="btnKirim">Kirim Data Saya</button>
+
+    </form>
+
+    <!-- Sukses -->
+    <div class="sukses" id="sukses">
+      <div class="icon">✅</div>
+      <h2>Jazakallah Khairan!</h2>
+      <p>Data Anda sudah tercatat.<br>Klik tombol di bawah untuk konfirmasi langsung ke admin majelis via WhatsApp.</p>
+      <a id="btnWA" href="#" target="_blank" class="btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.528 5.859L.057 23.5a.5.5 0 0 0 .61.61l5.677-1.485A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.7-.52-5.25-1.43l-.38-.22-3.92 1.03 1.04-3.81-.25-.39A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+        </svg>
+        Konfirmasi via WhatsApp
+      </a>
+      <p class="wa-note">Pesan sudah terisi otomatis, tinggal kirim ✓</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>© Majelis · Survey ini aman dan hanya digunakan untuk keperluan internal.</footer>
+
+<script>
+  // ⬇️ GANTI URL INI dengan URL Google Apps Script Anda
+  const APPS_SCRIPT_URL = "PASTE_URL_APPS_SCRIPT_ANDA_DI_SINI";
+
+  // Nomor WA Admin (sudah diisi)
+  const WA_ADMIN = "6281678797"; // 0816787977 → format internasional
+
+  const form     = document.getElementById('surveyForm');
+  const sukses   = document.getElementById('sukses');
+  const btnKirim = document.getElementById('btnKirim');
+  const errorMsg = document.getElementById('errorMsg');
+  const btnWA    = document.getElementById('btnWA');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorMsg.style.display = 'none';
+
+    const nama    = document.getElementById('nama').value.trim();
+    const hp      = document.getElementById('hp').value.trim();
+    const liter   = document.getElementById('liter').value;
+    const catatan = document.getElementById('catatan').value.trim();
+
+    const payload = { nama, hp, liter, catatan };
+
+    btnKirim.disabled = true;
+    btnKirim.textContent = 'Mengirim...';
+
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      // Buat pesan WA otomatis berisi data jamaah
+      const pesan =
+        `✅ *Konfirmasi Pendataan Minyak Majelis*\n\n` +
+        `Assalamualaikum Admin,\n\n` +
+        `Saya sudah mengisi survey kebutuhan minyak:\n\n` +
+        `👤 *Nama:* ${nama}\n` +
+        `📱 *No. WA:* ${hp}\n` +
+        `🛢️ *Kebutuhan:* ${liter} liter/bulan` +
+        (catatan ? `\n📝 *Catatan:* ${catatan}` : '') +
+        `\n\nMohon dikonfirmasi. Terima kasih 🙏`;
+
+      const waURL = `https://wa.me/${WA_ADMIN}?text=${encodeURIComponent(pesan)}`;
+      btnWA.href = waURL;
+
+      form.style.display = 'none';
+      sukses.style.display = 'block';
+
+    } catch (err) {
+      errorMsg.style.display = 'block';
+      btnKirim.disabled = false;
+      btnKirim.textContent = 'Kirim Data Saya';
+    }
+  });
+</script>
+
+</body>
+</html>
